@@ -25,3 +25,12 @@ logging:
     com.citizen.userserviceapi: ${LOGGING_LEVEL:DEBUG}
   pattern:
     console: ${LOGGING_PATTERN:%d{yyyy-MM-dd HH:mm:ss} - %msg%n}
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env, beans
