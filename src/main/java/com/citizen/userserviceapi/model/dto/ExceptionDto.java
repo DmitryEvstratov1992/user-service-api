@@ -1,10 +1,18 @@
 package com.citizen.userserviceapi.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.ZonedDateTime;
 
-public record ExceptionDto(
-        ZonedDateTime time,
-        Integer status,
-        String description
-) {
+@Getter
+@Setter
+@AllArgsConstructor
+public class ExceptionDto {
+
+    private ZonedDateTime time;
+    private Integer status;
+    private String description;
+
 }

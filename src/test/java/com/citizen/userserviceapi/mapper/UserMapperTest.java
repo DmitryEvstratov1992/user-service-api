@@ -1,6 +1,5 @@
 package com.citizen.userserviceapi.mapper;
 
-import com.citizen.userserviceapi.mapper.UserMapper;
 import com.citizen.userserviceapi.model.dto.UserCreateDto;
 import com.citizen.userserviceapi.model.dto.UserDto;
 import com.citizen.userserviceapi.model.entity.User;
@@ -20,8 +19,8 @@ public class UserMapperTest {
                 userCreateDto
         );
 
-        assertEquals(userCreateDto.firstName(), user.getFirstName());
-        assertEquals(userCreateDto.lastName(), user.getLastName());
+        assertEquals(userCreateDto.getFirstName(), user.getFirstName());
+        assertEquals(userCreateDto.getLastName(), user.getLastName());
     }
 
     @Test
@@ -34,10 +33,10 @@ public class UserMapperTest {
 
         UserDto userDto = new UserMapper().toUserDto(user);
 
-        assertEquals(user.getFirstName(), userDto.firstName());
-        assertEquals(user.getLastName(), userDto.lastName());
-        assertEquals(user.getOrganizationId(), userDto.organizationId());
-        assertEquals(user.getDogIds(), userDto.dogIds());
+        assertEquals(user.getFirstName(), userDto.getFirstName());
+        assertEquals(user.getLastName(), userDto.getLastName());
+        assertEquals(user.getOrganizationId(), userDto.getOrganizationId());
+        assertEquals(user.getDogIds(), userDto.getDogIds());
     }
 
 }
