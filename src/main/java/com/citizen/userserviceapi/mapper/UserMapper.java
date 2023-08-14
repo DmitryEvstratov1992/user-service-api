@@ -10,8 +10,8 @@ public class UserMapper {
 
     public User toUser(UserCreateDto dto) {
         return new User()
-                .setFirstName(dto.firstName())
-                .setLastName(dto.lastName());
+                .setFirstName(dto.getFirstName())
+                .setLastName(dto.getLastName());
     }
 
     public UserDto toUserDto(User user) {

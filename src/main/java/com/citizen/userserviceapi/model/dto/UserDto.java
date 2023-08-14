@@ -1,13 +1,18 @@
 package com.citizen.userserviceapi.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Set;
 
-public record UserDto(
-        Long id,
-        String firstName,
-        String lastName,
-        Set<Long> dogIds,
-        Long organizationId
-) {
-
+@Getter
+@Setter
+@AllArgsConstructor
+public class UserDto {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private Set<Long> dogIds;
+    private Long organizationId;
 }
