@@ -4,10 +4,19 @@ pipeline {
         maven 'maven_3.6.3'
     }
     stages {
-        stage ('Build') {
+        stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn clean test'
+            }
+        }
+        stage('Results') {
+            junit '**/target/surefire-reports/TEST-*.xml'
+            archive 'target/*.jar'
         }
     }
 }
