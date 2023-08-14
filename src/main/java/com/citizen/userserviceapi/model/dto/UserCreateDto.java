@@ -1,13 +1,16 @@
 package com.citizen.userserviceapi.model.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
-@Getter
-@Setter
-@AllArgsConstructor
+import javax.validation.constraints.NotBlank;
+
+@Accessors(chain = true)
+@Data
 public class UserCreateDto {
 
     @NotBlank

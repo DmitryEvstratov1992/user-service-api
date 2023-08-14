@@ -15,13 +15,12 @@ public class UserMapper {
     }
 
     public UserDto toUserDto(User user) {
-        return new UserDto(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getDogIds(),
-                user.getOrganizationId()
-        );
+        return new UserDto()
+                .setId(user.getId())
+                .setDogIds(user.getDogIds())
+                .setOrganizationId(user.getOrganizationId())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName());
     }
 
 }

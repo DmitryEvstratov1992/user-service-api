@@ -15,24 +15,22 @@ public class ExceptionHandlers {
 
     @ExceptionHandler
     public ResponseEntity<ExceptionDto> handler(MethodArgumentNotValidException exception) {
-        return ResponseEntity.ok(
-                new ExceptionDto(
-                        ZonedDateTime.now(),
-                        INVALID_PARAMS.getStatus(),
-                        INVALID_PARAMS.getDescription()
-                )
-        );
+        ExceptionDto exceptionDto = new ExceptionDto()
+                .setTime(ZonedDateTime.now())
+                .setStatus(INVALID_PARAMS.getStatus())
+                .setDescription(INVALID_PARAMS.getDescription());
+
+        return ResponseEntity.status(INVALID_PARAMS.getStatus()).body(exceptionDto);
     }
 
     @ExceptionHandler
     public ResponseEntity<ExceptionDto> handler(BusinessException exception) {
-        return ResponseEntity.ok(
-                new ExceptionDto(
-                        ZonedDateTime.now(),
-                        exception.getStatus(),
-                        exception.getMessage()
-                )
-        );
+        ExceptionDto exceptionDto = new ExceptionDto()
+                .setTime(ZonedDateTime.now())
+                .setStatus(exception.getStatus())
+                .setDescription(exception.getMessage());
+
+        return ResponseEntity.status(exception.getStatus()).body(exceptionDto);
     }
 
 }
