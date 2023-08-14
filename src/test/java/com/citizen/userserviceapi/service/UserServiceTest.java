@@ -39,7 +39,9 @@ public class UserServiceTest {
 
         when(userRepository.save(any())).thenReturn(new User());
 
-        userService.createUser(new UserCreateDto("Ivan", "Dubov"));
+        userService.createUser(new UserCreateDto()
+                .setFirstName("Ivan")
+                .setLastName("Dubov"));
 
         verify(userRepository, times(1)).save(any());
         verify(userMapper, times(1)).toUser(any());

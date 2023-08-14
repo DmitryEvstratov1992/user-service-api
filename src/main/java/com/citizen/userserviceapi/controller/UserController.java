@@ -4,7 +4,6 @@ import com.citizen.userserviceapi.model.dto.UserCreateDto;
 import com.citizen.userserviceapi.model.dto.UserDto;
 import com.citizen.userserviceapi.model.dto.UserUpdateDto;
 import com.citizen.userserviceapi.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.citizen.userserviceapi.controller.UserController.URL_ROOT;

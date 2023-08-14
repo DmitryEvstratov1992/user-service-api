@@ -13,7 +13,9 @@ public class UserMapperTest {
 
     @Test
     public void toUserTest() {
-        UserCreateDto userCreateDto = new UserCreateDto("dev", "prod");
+        UserCreateDto userCreateDto = new UserCreateDto()
+                .setFirstName("dev")
+                .setLastName("prod");
 
         User user = new UserMapper().toUser(
                 userCreateDto
