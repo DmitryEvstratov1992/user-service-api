@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public enum ExceptionCodes {
 
-    INVALID_PARAMS("Неверные параметры запроса", 500),
-    USER_NOT_FOUND("Не найден гражданин", 502);
+    INVALID_PARAMS("Invalid request parameters", 400),
+    USER_NOT_FOUND("Citizen not found", 442);
 
     private final String description;
     private final Integer status;
