@@ -19,6 +19,20 @@ spring:
       ddl-auto: none
     show-sql: ${SHOW_SQL:false}
 
+  redis:
+    host: 0.0.0.0
+    connect-timeout: 2000
+
+  cache:
+    redis:
+      time-to-live: 100000
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+
 logging:
   level:
     org.springframework.web: ERROR

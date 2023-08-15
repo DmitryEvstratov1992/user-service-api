@@ -9,6 +9,10 @@ import com.citizen.userserviceapi.model.entity.User;
 import com.citizen.userserviceapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +24,14 @@ import static com.citizen.userserviceapi.model.ExceptionCodes.USER_NOT_FOUND;
 
 @RequiredArgsConstructor
 @Slf4j
+@CacheConfig(cacheNames = "users")
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+    @CachePut(key = "#userDto.firstName")
     @Transactional
     @Override
     public UserDto createUser(UserCreateDto userDto) {
@@ -38,6 +44,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserDto(user);
     }
 
+    @CachePut(key = "#userDto.id")
     @Transactional
     @Override
     public UserDto updateUser(UserUpdateDto userDto) {
@@ -58,6 +65,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserDto(us);
     }
 
+    @Cacheable(key = "#id")
     @Override
     public UserDto findUserById(Long id) {
         log.info("Start method findUserById id = {}", id);
@@ -68,6 +76,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserDto(us);
     }
 
+    @Cacheable
     @Override
     public List<UserDto> findAllUsers() {
         log.info("Start method findAllUsers");
@@ -81,6 +90,7 @@ public class UserServiceImpl implements UserService {
         return dtos;
     }
 
+    @CacheEvict(key = "#id")
     @Transactional
     @Override
     public void deleteUserById(Long id) {

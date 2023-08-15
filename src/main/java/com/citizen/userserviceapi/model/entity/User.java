@@ -3,6 +3,8 @@ package com.citizen.userserviceapi.model.entity;
 import liquibase.util.StringUtil;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.CollectionTable;
@@ -14,32 +16,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity(name = "users")
 @Accessors(chain = true)
 @Getter
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
     @SequenceGenerator(name = "users_seq", sequenceName = "USERS_SEQ", allocationSize = 10)
     private Long id;
 
-    @Getter
     @Column(name = "first_name")
     private String firstName;
 
-    @Getter
     @Column(name = "last_name")
     private String lastName;
 
-    @Getter
+    @Fetch(value = FetchMode.JOIN)
     @ElementCollection
     @CollectionTable(name = "user_dogs", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Long> dogIds;
 
-    @Getter
     @Column(name = "organization_id")
     private Long organizationId;
 
