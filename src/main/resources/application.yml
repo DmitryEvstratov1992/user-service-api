@@ -26,6 +26,19 @@ logging:
   pattern:
     console: ${LOGGING_PATTERN:%d{yyyy-MM-dd HH:mm:ss} - %msg%n}
 
+swagger:
+  contact:
+    name: ${SWAGGER_CONTACT_NANE:Evstratov Dmitry}
+    email: ${SWAGGER_CONTACT_EMAIL:www.shepard1992@gmail.com}
+  info:
+    title: ${SWAGGER_INFO_TITLE:USER SERVICE API}
+    version: ${SWAGGER_INFO_VERSION:1.0}
+    description: ${SWAGGER_INFO_DESCRIPTION:This API exposes endpoints for manage users.}
+  servers:
+    local:
+      url: ${SWAGGER_SERVER_LOCAL_URL:http://localhost:8081}
+      description: ${SWAGGER_SERVER_LOCAL_DESCRIPTION:Server URL in Local environment}
+
 management:
   endpoint:
     health:
@@ -33,4 +46,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,env, beans
+        include: health,info,env,beans

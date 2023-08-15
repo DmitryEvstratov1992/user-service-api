@@ -1,14 +1,12 @@
 package com.citizen.userserviceapi.model.dto;
 
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 
+@Schema(description = "DTO for creating user")
 @Accessors(chain = true)
 @Data
 public class UserCreateDto {
