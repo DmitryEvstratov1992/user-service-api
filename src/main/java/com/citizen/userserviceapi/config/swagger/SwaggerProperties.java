@@ -1,4 +1,4 @@
-package com.citizen.userserviceapi.config;
+package com.citizen.userserviceapi.config.swagger;
 
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;

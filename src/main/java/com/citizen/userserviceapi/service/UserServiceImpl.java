@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final DogService dogService;
 
     @CachePut(key = "#userDto.firstName")
     @Transactional
@@ -49,6 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto updateUser(UserUpdateDto userDto) {
         log.info("Start method updateUser {}", userDto);
+        dogService.checkDogById(userDto.getDogIds());
 
         Optional<User> user = getUser(userDto.getId());
 

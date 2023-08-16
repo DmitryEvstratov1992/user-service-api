@@ -31,7 +31,7 @@ import static com.citizen.userserviceapi.controller.UserController.URL_ROOT;
 @RequiredArgsConstructor
 public class UserController {
 
-    private static final String URL_ID = "/{id}";
+    public static final String URL_ID = "/{id}";
     public static final String URL_ROOT = "/user";
 
     private final UserService userService;

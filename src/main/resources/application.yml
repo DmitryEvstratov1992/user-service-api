@@ -2,6 +2,8 @@ server:
   port: ${SERVER_PORT:8081}
 
 spring:
+  profiles:
+    active: ${PROFILE:default}
   application:
     name: ${APP_NAME:user-service-api}
 
@@ -40,6 +42,14 @@ logging:
   pattern:
     console: ${LOGGING_PATTERN:%d{yyyy-MM-dd HH:mm:ss} - %msg%n}
 
+feign:
+  metrics:
+    enabled: true
+  client:
+    config:
+      default:
+        logger-level: basic
+
 swagger:
   contact:
     name: ${SWAGGER_CONTACT_NANE:Evstratov Dmitry}
@@ -61,3 +71,6 @@ management:
     web:
       exposure:
         include: health,info,env,beans
+
+client:
+  dog-service-api-url: ${DOG_SERVICE:dog-service-api}

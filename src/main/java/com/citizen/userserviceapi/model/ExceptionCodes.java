@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum ExceptionCodes {
 
     INVALID_PARAMS("Invalid request parameters", 400),
-    USER_NOT_FOUND("Citizen not found", 442);
+    USER_NOT_FOUND("Citizen not found", 442),
+    DOG_NOT_FOUND("Dog not found", 443);
 
     private final String description;
     private final Integer status;
