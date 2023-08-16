@@ -31,6 +31,9 @@ public class UserServiceTest {
     @Mock
     private UserMapper userMapper;
 
+    @Mock
+    private DogService dogService;
+
     @InjectMocks
     private UserServiceImpl userService;
 

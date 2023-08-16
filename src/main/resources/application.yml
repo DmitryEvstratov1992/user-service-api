@@ -70,7 +70,14 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,env,beans
+        include: health,info,env,beans,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
 
 client:
   dog-service-api-url: ${DOG_SERVICE:dog-service-api}
