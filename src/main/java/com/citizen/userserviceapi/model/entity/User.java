@@ -26,7 +26,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq")
-    @SequenceGenerator(name = "users_seq", sequenceName = "USERS_SEQ", allocationSize = 10)
+    @SequenceGenerator(name = "users_seq", sequenceName = "USERS_SEQ", allocationSize = 1)
     private Long id;
 
     @Column(name = "first_name")
@@ -34,6 +34,8 @@ public class User implements Serializable {
 
     @Column(name = "last_name")
     private String lastName;
+
+    private String email;
 
     @Fetch(value = FetchMode.JOIN)
     @ElementCollection
@@ -48,6 +50,14 @@ public class User implements Serializable {
             return this;
         }
         this.firstName = firstName;
+        return this;
+    }
+
+    public User setEmail(String email) {
+        if (StringUtil.isEmpty(email)) {
+            return this;
+        }
+        this.email = email;
         return this;
     }
 

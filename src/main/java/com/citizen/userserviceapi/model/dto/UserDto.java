@@ -16,4 +16,5 @@ public class UserDto implements Serializable {
     private String lastName;
     private Set<Long> dogIds;
     private Long organizationId;
+    private String email;
 }

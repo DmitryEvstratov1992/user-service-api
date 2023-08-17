@@ -9,5 +9,7 @@
     </changeSet>
 
     <include file="create-table-user.sql" relativeToChangelogFile="true"/>
+    <include file="add-email-column-table-user.sql" relativeToChangelogFile="true"/>
+    <include file="alter-email-column-table-user.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
