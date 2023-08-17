@@ -17,4 +17,5 @@ public class UserUpdateDto {
     private String lastName;
     private Set<Long> dogIds;
     private Long organizationId;
+    private String email;
 }

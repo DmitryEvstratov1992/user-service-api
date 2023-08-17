@@ -10,6 +10,7 @@ public class UserMapper {
 
     public User toUser(UserCreateDto dto) {
         return new User()
+                .setEmail(dto.getEmail())
                 .setFirstName(dto.getFirstName())
                 .setLastName(dto.getLastName());
     }
@@ -17,6 +18,7 @@ public class UserMapper {
     public UserDto toUserDto(User user) {
         return new UserDto()
                 .setId(user.getId())
+                .setEmail(user.getEmail())
                 .setDogIds(user.getDogIds())
                 .setOrganizationId(user.getOrganizationId())
                 .setFirstName(user.getFirstName())
