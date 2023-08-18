@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+
+  user-service:
+    container_name: user-service
+    image: user-service:2.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - user-db
+    environment:
+      - SERVER_PORT=8081
+      - PROFILE=default
+      - APP_NAME=user-service-api
+      - DATABASE_URL=jdbc:postgresql://user-db/user_db
+      - DATABASE_USERNAME=citizen
+      - DATABASE_PASSWORD=root
+      - DATABASE_DRIVER=org.postgresql.Driver
+      - SHOW_SQL=false
+      - KAFKA_SERVERS:localhost:9092
+      - KAFKA_TOPIC_NOTIFICATION=notification
+      - SWAGGER_CONTACT_NANE=Evstratov Dmitry
+      - SWAGGER_CONTACT_EMAIL=www.shepard1992@gmail.com
+      - SWAGGER_INFO_TITLE=USER SERVICE API
+      - SWAGGER_INFO_VERSION=1.0
+      - SWAGGER_INFO_DESCRIPTION=This API exposes endpoints for manage users.
+      - SWAGGER_SERVER_LOCAL_URL=http://localhost:8081
+      - SWAGGER_SERVER_LOCAL_DESCRIPTION=Server URL in Local environment
+      - DOG_SERVICE=dog-service-api
+      - LOGGING_LEVEL=DEBUG
+      - LOGGING_PATTERN=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+      - REDIS_HOST=redis
+      - HIBERNATE_DDL=create
+
+  user-db:
+    container_name: user-db
+    image: postgres:12.3
+    environment:
+      POSTGRES_DB: user_db
+      POSTGRES_USER: "citizen"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - 15432:5432
+    restart: unless-stopped
+
+  redis:
+    container_name: user-redis
+    image: redis/redis-stack-server:latest
+    hostname: redis
+    restart: always
+    ports:
+      - "6379:6379"

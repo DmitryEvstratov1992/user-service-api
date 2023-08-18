@@ -12,7 +12,7 @@
 
     <groupId>com.citizen</groupId>
     <artifactId>user-service-api</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <name>user-service-api</name>
     <description>Project for users</description>
 

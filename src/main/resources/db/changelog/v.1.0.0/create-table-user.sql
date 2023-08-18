@@ -1,4 +1,4 @@
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
     id              BIGSERIAL PRIMARY KEY NOT NULL,
     first_name      VARCHAR(50)           NOT NULL,
